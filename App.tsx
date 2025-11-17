@@ -7,6 +7,7 @@ import Home from './screens/Home';
 import SecondScreen from './screens/SecondScreen';
 import MyAppbar from './components/MyAppbar';
 import { PaperProvider } from 'react-native-paper';
+import ThirdScreen from './screens/ThirdScreen';
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +23,7 @@ export default function App() {
       >
         <Stack.Screen name='Home' component={Home}/>
         <Stack.Screen name='SecondScreen' component={SecondScreen}/>
+        <Stack.Screen name='ThirdScreen' component={ThirdScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
     </PaperProvider>

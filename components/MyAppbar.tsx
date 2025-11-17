@@ -2,6 +2,7 @@ import { Appbar, Menu } from 'react-native-paper'
 import React from 'react'
 import { getHeaderTitle } from '@react-navigation/elements';
 import type { NativeStackHeaderProps } from '@react-navigation/native-stack';
+import { View } from 'react-native'
 
 export default function MyAppbar({navigation, route, options, back}: NativeStackHeaderProps) {
     const [visible, setVisible] = React.useState(false)
@@ -17,16 +18,30 @@ export default function MyAppbar({navigation, route, options, back}: NativeStack
                 visible={visible}
                 onDismiss={closeMenu}
                 anchor={
+                    <View>
                     <Appbar.Action icon="dots-vertical" onPress={openMenu}/>
+                    </View>
                 }>
             <Menu.Item
-                onPress={()=>{console.log('Option 1 was pressed')}} title='Option 1'
+                onPress={()=>{
+                    closeMenu()
+                    navigation.navigate('Home')
+                }} 
+                title='Homepage' disabled
             />
             <Menu.Item
-                onPress={()=>{console.log('Option 2 was pressed')}} title='Option 2'
+                onPress={()=> {
+                    closeMenu()
+                    navigation.navigate('SecondScreen')
+                }} 
+                title='Go to SecondScreen'
             />
             <Menu.Item
-                onPress={()=>{console.log('Option 3 was pressed')}} title='Option 3' disabled
+                onPress={()=>{
+                    closeMenu()
+                    navigation.navigate('ThirdScreen')
+                }} 
+                title='Go to ThirdScreen'
             />
             </Menu>
         ) : null}

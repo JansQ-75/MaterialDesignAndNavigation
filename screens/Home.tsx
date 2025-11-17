@@ -1,23 +1,34 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground } from 'react-native'
 import React from 'react'
 import { Button } from 'react-native-paper'
-import type { NativeStackHeaderProps } from '@react-navigation/native-stack';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-export default function Home({navigation}: NativeStackHeaderProps) {
+type Props = NativeStackScreenProps<any, 'Home'>
+export default function Home({navigation}: Props) {
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-      <Button mode='contained' onPress={() => navigation.navigate('SecondScreen')}>
+    
+      <ImageBackground
+        source={require('../assets/unicornyoga.png')}
+        style={styles.image}
+        resizeMode='contain'
+      >
+      <Button style={styles.button} mode='contained' onPress={() => navigation.navigate('SecondScreen')}>
         Go to SecondScreen
       </Button>
-    </View>
+      </ImageBackground>
+    
   )
 }
 const styles = StyleSheet.create({
-  container: {
+  image: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    padding: 20,
+    backgroundColor: '#e3bdd5ff',
   },
+  button: {
+    marginBottom: 90
+  },
+  
 })
